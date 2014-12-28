@@ -14,6 +14,10 @@ def create_app(config=None):
 #    def teardown(exception=None):
 #        g.db.close()
 
+    @app.route('/deity')
+    def deity():
+        return render_template('deity.html')
+
     @app.route('/')
     def index():
         return render_template('index.html')

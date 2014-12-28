@@ -1,7 +1,68 @@
 <html>
 <head>
+<style>
+.card {
+	font-size: 32px;
+}
+th {
+	text-decoration: underline;
+}
+</style>
 </head>
 <body>
-<h1>Card Creator!</h1>
+<h1><center>Deity Wars Card Creator</center></h1>
+<span class='card'>Deity Cards</span>  <a href={{ url_for('deity') }}>add</a>
+<table>
+	<thead>
+	<tr><th>Name</th><th>Elemental</th><th>Combat</th><th>Physical</th><th>Inherent</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<hr>
+<span class='card'>Special Cards</span>  <a href=''>add</a>
+<table>
+	<thead>
+	<tr><th>Deity</th><th>Name</th><th>Type</th><th>Special</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<hr>
+<span class='card'>Power Boost Cards</span>  <a href=''>add</a>
+<table>
+	<thead>
+	<tr><th>Name</th><th>Required</th><th>Boost</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<hr>
+<span class='card'>Training Card</span>  <a href=''>add</a>
+<table>
+	<thead>
+	<tr><th>Name</th><th>Required</th><th>Boost</th><th>Required</th><th>Boost</th>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<hr>
+<span class='card'>Cooperative Card</span>  <a href=''>add</a>
+<table>
+	<thead>
+	<tr><th>Name</th><th>Required</th><th>Acts As</th><th>1st Ally</th><th>2nd Ally</th><th>1st Ally</th><th>2nd Ally</th>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<hr>
+<span class='card'>Power Card</span>  <a href=''>add</a>
+<table>
+	<thead>
+	<tr><th>Power</th><th>Value</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
 </body>
 </html>
