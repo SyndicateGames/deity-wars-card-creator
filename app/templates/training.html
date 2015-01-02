@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block page %}
+<center><h2>Training Card</h2></center>
+<form style="width: 300px; margin: 0 auto;">
+Name: <input name="name"><br><br>
+Image: <input type='file'><br><br>
+<table style="margin: 0 auto;">
+<thead><tr><th>Category</th><th>Type</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+	<td>Requires</td>
+	<td><select name="requiredType1">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="requiredValue1">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr>
+	<td>Boosts</td>
+	<td><select name="boostType1">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="boostValue1">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr><td colspan=3 style="text-align: center">- or -</td></tr>
+<tr>
+	<td>Requires</td>
+	<td><select name="requiredType2">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="requiredValue2">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr>
+	<td>Boosts</td>
+	<td><select name="boostType2">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="boostValue2">{% include 'utils/values.html' %}</select></td>
+</tr>
+</tbody>
+</table>
+<br><br>
+<center><input type="submit"></center>
+</form>
+{% endblock %}

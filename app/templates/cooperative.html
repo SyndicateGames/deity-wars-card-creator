@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block page %}
+<center><h2>Cooperative Card</h2></center>
+<form style="width: 325px; margin: 0 auto;">
+Name: <input name="name"><br><br>
+Image: <input type='file'><br><br>
+<table style="margin: 0 auto">
+<thead><tr><th>Category</th><th>Type</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+	<td>Requires</td>
+	<td><select name="requiredType1">{% include 'utils/powers.html' %}</select></td> 
+    <td><select name="requiredValue1">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr>
+	<td>Acts As</td>
+	<td><select name="actsAsType">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="actsAsValue">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr><td colspan=3 style="text-align: center">Boosts</td></tr>
+<tr>
+	<td>1st Ally</td>
+	<td><select name="firstBoostType1">{% include 'utils/powers.html' %}</select></td>
+    <td><select name="firstBoostValue1">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr>
+	<td>2nd Ally</td>
+	<td><select name="firstBoostType2">{% include 'utils/powers.html' %}</select></td>
+    <td><select name="firstBoostValue2">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr><td colspan=3 style="text-align: center">- or -</td></tr>
+<tr>
+	<td>1st Ally</td>
+	<td><select name="secondBoostType1">{% include 'utils/powers.html' %}</select></td>
+    <td><select name="secondBoostValue1">{% include 'utils/values.html' %}</select></td>
+</tr>
+<tr>
+	<td>2nd Ally</td>
+	<td><select name="secondBoostType2">{% include 'utils/powers.html' %}</select></td>
+    <td><select name="secondBoostValue2">{% include 'utils/values.html' %}</select></td>
+</tr>
+</tbody>
+</table>
+<br><br>
+<center><input type="submit"></center>
+</form>
+{% endblock %}

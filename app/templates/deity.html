@@ -1,13 +1,41 @@
-<html>
-<body>
-<h1>Deity Card</h1>
-<form>
-Name: <input name="name"><br>
-Elemental: <input name="elemental"><br>
-Combat: <input name="combat"><br>
-Physical: <input name="physical"><br>
-Inherent: <input name="inherent"><br><br>
-Image: <input type='file'>
+{% extends 'base.html' %}
+{% block page %}
+<center><h2>Deity Card</h2></center>
+<form  style="width: 500px; margin: 0 auto;">
+<table style="margin: 0 auto">
+<tr>
+	<td align='right'>
+		Name: <input name="name"><br>
+		Inherent: <input name="inherent"><br>
+		Image: <input type='file'><br>
+	</td>
+	<td>
+		<table>
+		<tr>
+			<td>Elemental</td>
+			<td><select name="elemental">{% include 'utils/values.html' %}</select></td>
+		</tr>
+		<tr>
+			<td>Combat</td>
+			<td><select name="combat">{% include 'utils/values.html' %}</select></td>
+		</tr>
+		<tr>
+			<td>Physical</td>
+			<td><select name="physical">{% include 'utils/values.html' %}</select></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<center><input type="submit"></center>
 </form>
-</body>
-</html>
+<hr>
+<center><span class='card'>Special Cards</span>  <a href={{ url_for('special') }}>add</a></center>
+<table style="margin: 0 auto">
+	<thead>
+	<tr><th>Name</th><th>Type</th><th>Special</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+{% endblock %}

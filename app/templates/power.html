@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block page %}
+<center><h2>Power Card</h2></center>
+<form style="width: 300px; margin: 0 auto;">
+Image: <input type='file'><br><br>
+<table style="margin: 0 auto;">
+<thead><tr><th>Type</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+	<td><select name="requiredType">{% include 'utils/powers.html' %}</select></td>
+	<td><select name="requiredValue">{% include 'utils/values.html' %}</select></td>
+</tr>
+</tbody>
+</table>
+<br>
+<center><input type='submit'></center>
+</form>
+{% endblock %}
