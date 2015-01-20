@@ -22,8 +22,16 @@ def checkout_listener(dbapi_con, con_record, con_proxy):
 
 def get_db():
     if not hasattr(current_app, 'db'):
-        engine = create_engine(SQLALCHEMY_DATABASE_URI, pool_size=100, pool_recycle=3000)
-        event.listen(engine, 'checkout', checkout_listener)
-        db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+        engine = create_engine(SQLALCHEMY_DATABASE_URI,
+            pool_size=5,
+            pool_timeout=60,
+            pool_recycle=3500,
+            echo=False
+        )
+        db_session = scoped_session(sessionmaker(
+            autocommit=False,
+            autoflush=False,
+            bind=engine))
+
         current_app.db = db_session
     return current_app.db
