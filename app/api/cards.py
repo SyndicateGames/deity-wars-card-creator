@@ -5,5 +5,5 @@ from app.models import Card
 
 class CardsView(FlaskView):
     def index(self):
-        cards = g.query(Card).all()
+        cards = g.db.query(Card).all()
         return jsonify({'cards': cards})

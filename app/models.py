@@ -29,36 +29,50 @@ class Card(DeityWarsSchema, IDMixin, Base):
     image = Column(Text)
     rarity = Column(Text)
     type = Column(Text)
+    __mapper_args__ = {
+        'polymorphic_identity': 'Card',
+        'polymorphic_on': type
+    }
 
 
-class CardFKMixin(object):
-    id = Column('id', Integer, ForeignKey('cards.card.id'), primary_key=True)
 
-
-class PowerCard(Card, CardFKMixin):
+class PowerCard(Card):
     __tablename__ = 'power_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     power = Column(Text)
     value = Column(Integer)
+    __mapper_args__ = {
+        'polymorphic_identity': 'power'
+    }
 
 
-class DeityCard(Card, CardFKMixin):
+class DeityCard(Card):
     __tablename__ = 'deity_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     elemental = Column(Integer)
     combat = Column(Integer)
     physical = Column(Integer)
     inherent = Column(Text)
+    __mapper_args__ = {
+        'polymorphic_identity': 'deity'
+    }
 
 
-class PowerBoostCard(Card, CardFKMixin):
+class PowerBoostCard(Card):
     __tablename__ = 'power_boost_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     power_required = Column(Text)
     value_required = Column(Integer)
     power_boost = Column(Text)
     value_boost = Column(Integer)
+    __mapper_args__ = {
+        'polymorphic_identity': 'power_boost'
+    }
 
 
-class TrainingCard(Card, CardFKMixin):
+class TrainingCard(Card):
     __tablename__ = 'training_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     power_required_1 = Column(Text)
     value_required_1 = Column(Integer)
     power_boost_1 = Column(Text)
@@ -67,10 +81,14 @@ class TrainingCard(Card, CardFKMixin):
     value_required_2 = Column(Integer)
     power_boost_2 = Column(Text)
     value_boost_2 = Column(Integer)
+    __mapper_args__ = {
+        'polymorphic_identity': 'training'
+    }
 
 
-class CooperativeCard(Card, CardFKMixin):
+class CooperativeCard(Card):
     __tablename__ = 'cooperative_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     power_required = Column(Text)
     value_required = Column(Integer)
     power_attack = Column(Text)
@@ -83,10 +101,17 @@ class CooperativeCard(Card, CardFKMixin):
     first_power_value_2 = Column(Integer)
     second_power_boost_2 = Column(Text)
     second_power_value_2 = Column(Integer)
+    __mapper_args__ = {
+        'polymorphic_identity': 'cooperative'
+    }
 
 
-class SpecialCard(Card, CardFKMixin):
+class SpecialCard(Card):
     __tablename__ = 'special_card'
+    id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
     deity = Column(UUID, ForeignKey(DeityCard.id))
     special_text = Column(Text)
     special_type = Column(Text)
+    __mapper_args__ = {
+        'polymorphic_identity': 'special'
+    }
