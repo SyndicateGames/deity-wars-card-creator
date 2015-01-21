@@ -1,30 +1,16 @@
-import uuid
-
 from sqlalchemy import (Column, ForeignKey, Integer, Text)
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-
-
-class UUID4Mixin(object):
-    id = Column('id', UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-
-
-class IDMixin(object):
-    id = Column('id', Integer, primary_key=True)
-
-
-class ImageMixin(object):
-    image = Column(Text)
 
 
 class DeityWarsSchema(object):
     __table_args__ = {'schema': 'cards'}
 
 
-class Card(DeityWarsSchema, IDMixin, Base):
+class Card(DeityWarsSchema, Base):
     __tablename__ = 'card'
+    id = Column('id', Integer, primary_key=True)
     name = Column(Text)
     image = Column(Text)
     rarity = Column(Text)
@@ -33,7 +19,6 @@ class Card(DeityWarsSchema, IDMixin, Base):
         'polymorphic_identity': 'Card',
         'polymorphic_on': type
     }
-
 
 
 class PowerCard(Card):
@@ -109,7 +94,7 @@ class CooperativeCard(Card):
 class SpecialCard(Card):
     __tablename__ = 'special_card'
     id = Column(Integer, ForeignKey('cards.card.id'), primary_key=True)
-    deity = Column(UUID, ForeignKey(DeityCard.id))
+    deity = Column(Integer, ForeignKey(DeityCard.id))
     special_text = Column(Text)
     special_type = Column(Text)
     __mapper_args__ = {

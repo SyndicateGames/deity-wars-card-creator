@@ -2,7 +2,7 @@ from flask import Flask, g, render_template
 
 from app.api.cards import CardsView
 from app.config import POWER_TYPES, POWER_VALUES
-from app.utils import get_db
+from app.utils.db import get_db
 
 
 def create_app(config=None):
@@ -17,6 +17,7 @@ def create_app(config=None):
         g.db.close()
 
     CardsView.register(app, route_base='/api/cards')
+    
     @app.route('/cooperative')
     def cooperative():
         return render_template(
