@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
+{% block extra_js %}
+<script src={{ url_for('static', filename='js/main.js') }} type=application/javascript></script>
+<script>
+    var viewModelInstance = null;
+    window.getViewModel = function () {
+      return viewModelInstance;
+    }
+    window.setViewModel = function ( newViewModeLinstance ) {
+      viewModelInstance = newViewModeLinstance;
+      ko.applyBindings( viewModelInstance );
+    }
+    $(document).ready(function(){
+      setViewModel(new indexViewModel());
+    });
+</script>
+{% endblock %}
 {% block page %}
+<ul class="nav nav-tabs">
+<!-- ko foreach: tabs -->
+<li data-bind="css: {active: $parent.selectedTab() == id()}"><a href="#", data-bind="text: name, click: $parent.selectedTab.bind($parent, id())"></a></li>
+<!-- /ko -->
+</ul>
+
 <span class='card'>Deity Cards</span>  <a href={{ url_for('deity') }}>add</a>
 <table>
 	<thead>

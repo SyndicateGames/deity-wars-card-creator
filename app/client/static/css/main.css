@@ -1,0 +1,13 @@
+body {
+    background-color: #888888;
+    color: #222222;
+}
+hr {
+    border-color: #666666;
+}
+.card {
+    font-size: 32px;
+}
+th {
+    text-decoration: underline;
+}

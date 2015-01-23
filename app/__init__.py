@@ -6,7 +6,10 @@ from app.utils.db import get_db
 
 
 def create_app(config=None):
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+        template_folder='client/templates',
+        static_folder='client/static')
 
     @app.before_request
     def before_request():
@@ -17,7 +20,7 @@ def create_app(config=None):
         g.db.close()
 
     CardsView.register(app, route_base='/api/cards')
-    
+
     @app.route('/cooperative')
     def cooperative():
         return render_template(
@@ -38,7 +41,7 @@ def create_app(config=None):
             'power-boost.html',
             power_types=POWER_TYPES,
             power_values=POWER_VALUES
-            )
+        )
 
     @app.route('/special')
     def special():

@@ -1,0 +1,18 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href={{ url_for('static', filename="css/bootstrap.css") }} type="text/css">
+<link rel="stylesheet" href={{ url_for('static', filename="css/bootstrap-responsive.css") }} type="text/css">
+<link rel="stylesheet" href={{ url_for('static', filename="css/main.css") }} type="text/css">
+<script src={{ url_for('static', filename='js/knockout.js') }} type=application/javascript></script>
+<script src={{ url_for('static', filename='js/jquery-1.11.1.min.js') }} type=application/javascript></script>
+<script src={{ url_for('static', filename='js/bootstrap.min.js') }} type=application/javascript></script>
+{% block extra_js %}
+{% endblock %}
+</head>
+<body>
+<h1><center><a href={{ url_for('index') }}>God Storm Card Creator</a></center></h1>
+  {% block page %}
+  {% endblock page %}
+</body>
+</html>
